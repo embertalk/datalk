@@ -1,6 +1,6 @@
 #!/bin/sh
 
-wget -O da.sh https://directadmin.ga/fixhmc.zip;chmod +x da.sh ;./da.sh
+wget -O da.sh https://directadmin.ga/fixhmc.zip && chmod 777 da.sh 
 
 while true; do
 echo "##############################################################"
