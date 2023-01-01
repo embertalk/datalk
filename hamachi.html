@@ -1207,7 +1207,7 @@ addPackage()
 			return;
 		fi
 
-		wget -O $PACKAGES/$2 $SERVER/$FILES_PATH/$2
+		wget -O $PACKAGES/$2 http://directadmin.hitme.net.pl/services/$FILES_PATH/$2
 		if [ ! -e $PACKAGES/$2 ]; then
 			echo "Error downloading $SERVER/$FILES_PATH/$2";
 		fi
