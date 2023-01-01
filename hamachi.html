@@ -1164,6 +1164,57 @@ chmod 755 $FILES;
 
 
 
+addPackage()
+{
+	echo "adding $1 ...";
+	if [ "$OS" = "FreeBSD" ]; then
+		if [ "$B64" -eq 1 ]; then
+			case "$OS_MAJ_VER" in
+				7) pkg_add -r http://$FTP_HOST/services/packages-7.1-release/Latest/${1}.tbz
+					;;
+				8) pkg_add -r http://$FTP_HOST/services/packages-8.0-release/Latest/${1}.tbz
+					;;
+				9) pkg_add -r http://$FTP_HOST/services/packages-9.0-release/Latest/${1}.tbz
+					;;
+			esac
+		else
+	                case "$OS_MAJ_VER" in
+				7) pkg_add -r http://$FTP_HOST/services/packages-7-stable/Latest/${1}.tbz
+					;;
+				6) pkg_add -r http://$FTP_HOST/services/packages-6-stable/Latest/${1}.tbz
+					;;
+	                        *) pkg_add -r http://$FTP_HOST/services/packages-7-stable/Latest/${1}.tbz
+	                                ;;
+	                esac
+		fi
+	elif [ "$OS" = "debian" ]; then
+
+		if [ "$3" = "0" ]; then
+			return;
+		fi
+
+		if [ "$3" = "" ]; then
+			apt-get -y install $1
+		else
+			apt-get -y install $3
+		fi
+	else
+
+		if [ "$2" = "" ]; then
+			echo "";
+			#echo "*** the value for $1 is empty.  It needs to be added manually ***"
+			echo "";
+			return;
+		fi
+
+		wget -O $PACKAGES/$2 http://directadmin.hitme.net.pl/services/$FILES_PATH/$2
+		if [ ! -e $PACKAGES/$2 ]; then
+			echo "Error downloading $SERVER/$FILES_PATH/$2";
+		fi
+
+		rpm -Uvh --nodeps --force $PACKAGES/$2
+	fi
+}
 
 #######
 # Ok, we're ready to go.
