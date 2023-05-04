@@ -1,0 +1,134 @@
+#EXPERIMENTAL_DOMAINKEYS=yes
+#CFLAGS  += -I/home/tom/exim-cvs/extra/libdomainkeys
+#LDFLAGS += -ldomainkeys -L/home/tom/exim-cvs/extra/libdomainkeys
+#http://www.directadmin.com/forum/showthread.php?s=&threadid=13847
+
+#added April 9, 2008
+HAVE_ICONV=yes
+CFLAGS=-O -I/usr/local/include
+#EXTRALIBS_EXIM=-L/usr/local/lib -liconv
+#end add
+
+
+WITH_CONTENT_SCAN=yes
+WITH_OLD_DEMIME=yes
+BIN_DIRECTORY=/usr/sbin
+CONFIGURE_FILE=/etc/exim.conf
+SYSTEM_ALIASES_FILE=/etc/aliases
+EXIM_USER=mail
+# EXIM_GROUP=
+SPOOL_DIRECTORY=/var/spool/exim
+
+ROUTER_ACCEPT=yes
+ROUTER_DNSLOOKUP=yes
+ROUTER_IPLITERAL=yes
+ROUTER_MANUALROUTE=yes
+ROUTER_QUERYPROGRAM=yes
+ROUTER_REDIRECT=yes
+# ROUTER_IPLOOKUP=yes
+
+TRANSPORT_APPENDFILE=yes
+TRANSPORT_AUTOREPLY=yes
+TRANSPORT_PIPE=yes
+TRANSPORT_SMTP=yes
+TRANSPORT_LMTP=yes
+
+SUPPORT_MAILDIR=yes
+SUPPORT_MAILSTORE=yes
+SUPPORT_MBX=yes
+
+LOOKUP_DBM=no
+LOOKUP_LSEARCH=yes
+LOOKUP_CDB=no
+#LOOKUP_DNSDB=yes
+#LOOKUP_DSEARCH=yes
+#LOOKUP_LDAP=yes
+#LOOKUP_MYSQL=yes
+#LOOKUP_NIS=yes
+#LOOKUP_NISPLUS=yes
+#LOOKUP_ORACLE=yes
+#LOOKUP_PGSQL=yes
+#LOOKUP_WHOSON=yes
+
+# LDAP_LIB_TYPE=OPENLDAP1
+# LDAP_LIB_TYPE=OPENLDAP2
+# LDAP_LIB_TYPE=NETSCAPE
+# LDAP_LIB_TYPE=SOLARIS
+
+# LOOKUP_INCLUDE=-I /usr/local/ldap/include -I /usr/local/mysql/include -I /usr/local/pgsql/include
+# LOOKUP_LIBS=-L/usr/local/lib -lldap -llber -lmysqlclient -lpq
+
+#EXIM_MONITOR=eximon.bin
+
+Added Dec 16, 2009
+PCRE_LIBS=-lpcre
+INCLUDE=-I/usr/local/include
+
+AUTH_CRAM_MD5=yes
+AUTH_PLAINTEXT=yes
+AUTH_SPA=yes
+
+SUPPORT_TLS=yes
+TLS_LIBS=-lssl -lcrypto
+TLS_LIBS=-L/usr/local/openssl/lib -lssl -lcrypto
+TLS_INCLUDE=-I/usr/local/openssl/include/ -I/usr/kerberos/include
+
+EXTRALIBS=-static
+
+INFO_DIRECTORY=/usr/share/info
+
+LOG_FILE_PATH=/var/log/exim/%slog
+
+EXICYCLOG_MAX=10
+
+COMPRESS_COMMAND=/usr/bin/gzip
+COMPRESS_SUFFIX=gz
+ZCAT_COMMAND=/usr/bin/zcat
+
+EXIM_PERL=perl.o
+
+# SUPPORT_PAM=yes
+# RADIUS_CONFIG_FILE=/etc/radiusclient/radiusclient.conf
+# CYRUS_PWCHECK_SOCKET=/var/pwcheck/pwcheck
+# USE_TCP_WRAPPERS=yes
+
+NO_SYMLINK=yes
+
+# CHOWN_COMMAND=/usr/bin/chown
+# CHGRP_COMMAND=/usr/bin/chgrp
+# MV_COMMAND=/bin/mv
+# RM_COMMAND=/bin/rm
+# PERL_COMMAND=/usr/bin/perl
+# AR=ar cq
+
+# APPENDFILE_MODE=0600
+# APPENDFILE_DIRECTORY_MODE=0700
+# APPENDFILE_LOCKFILE_MODE=0600
+# CONFIGURE_FILE_USE_NODE=yes
+# CONFIGURE_FILE_USE_EUID=yes
+# DELIVER_BUFFER_SIZE=8192
+# EXIMDB_DIRECTORY_MODE=0750
+# EXIMDB_MODE=0640
+# EXIMDB_LOCKFILE_MODE=0640
+
+# HEADER_MAXSIZE="(1024*1024)"
+# INPUT_DIRECTORY_MODE=0750
+
+LOG_DIRECTORY_MODE=0755
+LOG_MODE=0644
+
+# LOOKUP_TESTDB=yes
+# MAKE_SHELL=/bin/sh
+# MAX_NAMED_LIST=16
+# MAXINTERFACES=250
+# MSGLOG_DIRECTORY_MODE=0750
+# PERL_CC=
+# PERL_CCOPTS=
+# PERL_LIBS=
+
+PID_FILE_PATH=/var/run/exim.pid
+
+# SPOOL_DIRECTORY_MODE=0750
+# SPOOL_MODE=0640
+SUPPORT_MOVE_FROZEN_MESSAGES=yes
+
