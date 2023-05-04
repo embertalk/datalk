@@ -1,0 +1,7 @@
+/var/log/proftpd/access.log /var/log/proftpd/auth.log /var/log/proftpd/xferlog.legacy /var/log/proftpd/proftpd.tls.log {
+	missingok
+	notifempty
+	postrotate
+		/usr/bin/kill -HUP `cat /var/run/proftpd.pid 2>/dev/null` 2>/dev/null || true
+	endscript
+}
