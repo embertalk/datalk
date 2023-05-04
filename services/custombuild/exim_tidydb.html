@@ -1,0 +1,32 @@
+#!/bin/sh
+
+[ -n "$EX4DEBUG" ] && set -x
+
+# Only do anything if exim4 is actually installed
+if [ ! -x /usr/sbin/exim ]; then
+  exit 0
+fi
+
+# Uncomment the following lines to get daily e-mail reports
+#if [ -x /usr/sbin/eximstats ]; then
+#  eximstats </var/log/exim/mainlog \
+#                    | mail postmaster -s"$(hostname) Daily email activity report"
+#fi
+
+# run tidydb as mail.
+exim_tidydb_as_mail()
+{
+        sudo -H -u mail -g mail /bin/sh -c "/usr/sbin/exim_tidydb $1 $2"
+}
+
+if [ -x /usr/sbin/exim_tidydb ]; then
+  cd /var/spool/exim/db || exit 1
+  for file in *; do
+    if echo $file | grep \\.lockfile >/dev/null 2>&1; then
+        : # skip lock files
+    else
+        exim_tidydb_as_mail /var/spool/exim $file >/dev/null
+    fi
+  done
+fi
+
